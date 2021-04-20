@@ -60,7 +60,6 @@ public class Main {
 			
 			default:System.out.println("Commande invalide ");
 				
-				break;
 			}
 			
 		}
