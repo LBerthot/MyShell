@@ -1,6 +1,6 @@
-package fr.afpa.cda.main;
+package fr.afpa.cda.main.commandes;
 
-public class MyMan {
+public class MyRmdir {
 
 	public static void exec() {
 		// TODO Auto-generated method stub

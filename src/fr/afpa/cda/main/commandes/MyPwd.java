@@ -1,4 +1,4 @@
-package fr.afpa.cda.main;
+package fr.afpa.cda.main.commandes;
 
 public class MyPwd {
 

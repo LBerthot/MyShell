@@ -1,6 +1,6 @@
-package fr.afpa.cda.main;
+package fr.afpa.cda.main.commandes;
 
-public class MyTouch {
+public class MyWc {
 
 	public static void exec() {
 		// TODO Auto-generated method stub
