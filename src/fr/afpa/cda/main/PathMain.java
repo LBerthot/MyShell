@@ -28,7 +28,6 @@ public class PathMain {
 																			// chemin en string
 	}
 
-
 	public static String calculeCheminDirIfExists(String chemin)
 			throws CheminInvalideException, CheminRepertoirInvalideException {
 		String cheminCalcule = calculeCheminIfExists(chemin);
