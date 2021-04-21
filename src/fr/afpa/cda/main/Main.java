@@ -67,12 +67,14 @@ public class Main {
 						if (i == 0) {
 							String chemin = newDirs.get(0);
 							chemin = PathMain.calculeChemin(chemin);
+							System.out.println(chemin);
 							File f = new File(chemin);
 							f.mkdir();
 						} else {
 							newDirs.set(0, (newDirs.get(0) + "/" + newDirs.get(i)));
-							String chemin = newDirs.get(0) + "/" + newDirs.get(i);
+							String chemin = newDirs.get(0);
 							chemin = PathMain.calculeChemin(chemin);
+							System.out.println(chemin);
 							File f = new File(chemin);
 							f.mkdir();
 						}
@@ -111,9 +113,9 @@ public class Main {
 				try {
 					Files.delete(path);
 				} catch (NoSuchFileException e) {
-					System.out.println("Le fichier ou répertoire " + chemin + " n'existe pas");
+					System.out.println("Le fichier ou rï¿½pertoire " + chemin + " n'existe pas");
 				} catch (DirectoryNotEmptyException e) {
-					System.out.println("Le répertoire " + chemin + " n'est pas vide");
+					System.out.println("Le rï¿½pertoire " + chemin + " n'est pas vide");
 				} catch (IOException e) {
 					System.out.println("Impossible de supprimer " + chemin + " : " + e);
 				}
