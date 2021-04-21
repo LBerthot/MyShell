@@ -1,12 +1,6 @@
 package fr.afpa.cda.main;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.DirectoryNotEmptyException;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +10,7 @@ import fr.afpa.cda.exception.CheminInvalideException;
 import fr.afpa.cda.exception.CheminRepertoirInvalideException;
 import fr.afpa.cda.exception.CommandeIntrouvableException;
 import fr.afpa.cda.exception.CommandeInvalideException;
+import fr.afpa.cda.main.commandes.MyRm;
 import fr.afpa.cda.main.dto.CommandeLine;
 
 public class Main {
@@ -55,10 +50,8 @@ public class Main {
 					System.out.println(e.getMessage());
 					continue;
 				}
-
 			}
 			if (cmd.getNom().equals("myMkdir")) {
-
 				if ((!cmd.getOptions().isEmpty()) && cmd.getOptions().get(0).equals("p")) {
 					String[] splitNewDirs = cmd.getParams().get(0).replaceAll("/", " ").split(" ");
 					List<String> newDirs = new ArrayList<String>(Arrays.asList(splitNewDirs));
@@ -106,17 +99,7 @@ public class Main {
 				}
 			}
 			if (cmd.getNom().equals("myRm")) {
-				String chemin = cmd.getParams().get(0);
-				Path path = Paths.get(PathMain.calculeChemin(chemin));
-				try {
-					Files.delete(path);
-				} catch (NoSuchFileException e) {
-					System.out.println("Le fichier ou répertoire " + chemin + " n'existe pas");
-				} catch (DirectoryNotEmptyException e) {
-					System.out.println("Le répertoire " + chemin + " n'est pas vide");
-				} catch (IOException e) {
-					System.out.println("Impossible de supprimer " + chemin + " : " + e);
-				}
+				MyRm.exec(cmd);
 			}
 
 		}
