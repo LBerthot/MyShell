@@ -1,6 +1,9 @@
 package fr.afpa.cda.main;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -26,7 +29,7 @@ import fr.afpa.cda.main.dto.CommandeLine;
 
 public class Main {
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 
 		Scanner sc =new Scanner(System.in);
 		
@@ -84,9 +87,8 @@ public class Main {
 			}
 			
 		}
-			
-		}
-			public static void main2(String[] arg) {
+		*/
+			public static void main(String[] arg) {
 				Scanner sc2 = new Scanner(System.in);
 				sc2.useDelimiter("(\r|\n)+");// permet d'accepter les espaces dans le scanner
 				String saisieUtilisateur = null;
@@ -125,10 +127,12 @@ public class Main {
 
 					}
 					if (cmd.getNom().equals("myMkdir")) {
-						String chemin = cmd.getParams().get(0);
-						chemin = PathMain.calculeChemin(chemin);
-						File f = new File(chemin);
-						f.mkdir();
+						for(int i=0;i<cmd.getParams().size();i++) {
+							String chemin = cmd.getParams().get(i);
+							chemin = PathMain.calculeChemin(chemin);
+							File f = new File(chemin);
+							f.mkdir();
+						}
 					}
 				}
 				System.out.println("Au revoir !");
