@@ -11,6 +11,7 @@ import fr.afpa.cda.exception.CheminRepertoirInvalideException;
 import fr.afpa.cda.exception.CommandeIntrouvableException;
 import fr.afpa.cda.exception.CommandeInvalideException;
 import fr.afpa.cda.main.commandes.MyRm;
+import fr.afpa.cda.main.commandes.MyRmDir;
 import fr.afpa.cda.main.dto.CommandeLine;
 
 public class Main {
@@ -100,6 +101,9 @@ public class Main {
 			}
 			if (cmd.getNom().equals("myRm")) {
 				MyRm.exec(cmd);
+			}
+			if (cmd.getNom().equals("myRmDir")) {
+				MyRmDir.exec(cmd);
 			}
 
 		}
