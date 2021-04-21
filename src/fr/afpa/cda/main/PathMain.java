@@ -51,7 +51,6 @@ public class PathMain {
 		if (!path.isAbsolute()) {
 			path = Path.of(pathMiniShell, chemin);// recupere dabord le chemin et ajoute le chemin saisi .normalize
 		}
-
 		return path.normalize().toString();
 	}
 
@@ -75,7 +74,6 @@ public class PathMain {
 			}
 
 		}
-
 		return cmd;
 	}
 
