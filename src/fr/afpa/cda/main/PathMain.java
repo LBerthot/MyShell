@@ -11,13 +11,14 @@ import fr.afpa.cda.exception.CheminInvalideException;
 import fr.afpa.cda.exception.CheminRepertoirInvalideException;
 import fr.afpa.cda.exception.CommandeIntrouvableException;
 import fr.afpa.cda.exception.CommandeInvalideException;
+import fr.afpa.cda.exception.OptionInvalidException;
 import fr.afpa.cda.main.dto.CommandeLine;
 
 public class PathMain {
 	private final static List<String> ALL_COMMANDES;
 	public static String pathMiniShell;
 	static {
-		String[] allCommandes = { "myPwd", "myCd", "myMkdir", "myExit", "myRm" };
+		String[] allCommandes = { "myPwd", "myCd", "myMkdir", "myExit", "myRm", "myRmDir" };
 		ALL_COMMANDES = new ArrayList<>(Arrays.asList(allCommandes));
 
 		Path monChemin = Paths.get(".");// permet de se situer avec le "."
@@ -79,4 +80,6 @@ public class PathMain {
 	public static boolean isCommande(String commande) {
 		return ALL_COMMANDES.contains(commande);
 	}
+	
+	
 }
