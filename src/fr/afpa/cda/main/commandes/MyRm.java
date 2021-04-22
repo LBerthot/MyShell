@@ -18,33 +18,24 @@ import fr.afpa.cda.main.dto.CommandeLine;
 public class MyRm {
 
 	public static void exec(CommandeLine cmd) {
-		if (cmd.getOptions().isEmpty()) {
-			myRmWithoutOption(cmd);
-		} else {
+		Boolean optionV = false;
+		if (!cmd.getOptions().isEmpty()) {
 			try {
 				optionIsValid(cmd.getOptions());
-				for (String opt : cmd.getOptions()) {
-					if (opt.equals("r") && cmd.getOptions().size() == 1) {
-						myRmOptionR(cmd);
-					}
-					if (opt.equals("r") && cmd.getOptions().size() > 1) {
-						myRmOptionR(cmd);
-						myRmOptionV(cmd);
-						break;
-					} else if (opt.equals("v") && cmd.getOptions().size() == 1) {
-						myRmWithoutOption(cmd);
-						myRmOptionV(cmd);
-					} else if (opt.equals("v") && cmd.getOptions().size() > 1) {
-						myRmOptionR(cmd);
-						myRmOptionV(cmd);
-						break;
-					}
+				if (cmd.getOptions().contains("v")) {
+					optionV = myRmOptionV(cmd);
+				}
+				if (cmd.getOptions().contains("r")) {
+					myRmOptionR(cmd, optionV);
 				}
 			} catch (OptionInvalidException e) {
 				System.out.println(e.getMessage());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+		if (cmd.getOptions().isEmpty() || cmd.getOptions().contains("v")) {
+			myRmWithoutOption(cmd, optionV);
 		}
 	}
 
@@ -57,36 +48,43 @@ public class MyRm {
 		return true;
 	}
 
-	private static void myRmOptionV(CommandeLine cmd) {
-		String chemin = cmd.getParams().get(0);
-		Path path = Paths.get(PathMain.calculeChemin(chemin));
-		System.out.println("Suppression de " + path.getFileName());
+	private static Boolean myRmOptionV(CommandeLine cmd) {
+		return true;
 
 	}
 
-	private static void myRmOptionR(CommandeLine cmd) throws IOException {
+	private static void myRmOptionR(CommandeLine cmd, Boolean optionV) throws IOException {
 		String chemin = cmd.getParams().get(0);
 		Path path = Paths.get(PathMain.calculeChemin(chemin));
 		Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
 			@Override
 			public FileVisitResult visitFile(Path file, BasicFileAttributes attr) throws IOException {
 				Files.delete(file);
+				if (optionV) {
+					System.out.println("Suppression de " + file.getFileName());
+				}
 				return FileVisitResult.CONTINUE;
 			}
 
 			@Override
 			public FileVisitResult postVisitDirectory(Path dir, IOException e) throws IOException {
 				Files.delete(dir);
+				if (optionV) {
+					System.out.println("Suppression de " + dir.getFileName());
+				}
 				return FileVisitResult.CONTINUE;
 			}
 		});
 	}
 
-	private static void myRmWithoutOption(CommandeLine cmd) {
+	private static void myRmWithoutOption(CommandeLine cmd, Boolean optionV) {
 		String chemin = cmd.getParams().get(0);
 		Path path = Paths.get(PathMain.calculeChemin(chemin));
 		try {
 			Files.delete(path);
+			if (optionV) {
+				System.out.println("Suppression de " + path.getFileName());
+			}
 		} catch (NoSuchFileException e) {
 			System.out.println("Le fichier ou répertoire " + chemin + " n'existe pas");
 		} catch (DirectoryNotEmptyException e) {
