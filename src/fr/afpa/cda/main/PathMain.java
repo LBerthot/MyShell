@@ -11,14 +11,13 @@ import fr.afpa.cda.exception.CheminInvalideException;
 import fr.afpa.cda.exception.CheminRepertoirInvalideException;
 import fr.afpa.cda.exception.CommandeIntrouvableException;
 import fr.afpa.cda.exception.CommandeInvalideException;
-import fr.afpa.cda.exception.OptionInvalidException;
 import fr.afpa.cda.main.dto.CommandeLine;
 
 public class PathMain {
 	private final static List<String> ALL_COMMANDES;
 	public static String pathMiniShell;
 	static {
-		String[] allCommandes = { "myPwd", "myCd", "myMkdir", "myExit", "myRm", "myRmDir" };
+		String[] allCommandes = { "myPwd", "myCd", "myMkdir", "myExit", "myRm", "myRmDir", "myFind" };
 		ALL_COMMANDES = new ArrayList<>(Arrays.asList(allCommandes));
 
 		Path monChemin = Paths.get(".");// permet de se situer avec le "."
