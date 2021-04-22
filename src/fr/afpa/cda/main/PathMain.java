@@ -18,8 +18,7 @@ public class PathMain {
 	public static String pathMiniShell;
 	static {
 
-		String[] allCommandes = { "myPwd", "myCd", "myMkdir", "myExit", "myRm", "myRmdir", "myFind" };
-
+		String[] allCommandes = { "myPwd", "myCd", "myMkdir", "myExit", "myMv", "myRmDir", "myRm","myTop", "myCp"};
 		ALL_COMMANDES = new ArrayList<>(Arrays.asList(allCommandes));
 
 		Path monChemin = Paths.get(".");// permet de se situer avec le "."
