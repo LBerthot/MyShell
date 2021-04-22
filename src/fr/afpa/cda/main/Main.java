@@ -30,7 +30,7 @@ public class Main {
 			if (cmd.getNom().equals("myExit")) {
 				break;
 			} else if (cmd.getNom().equals("myPwd")) {
-				MyPwd.exec();
+				MyPwd.exec(cmd);
 			}else if (cmd.getNom().equals("myCd")) {
 				MyCd.exec(cmd);
 			}else if (cmd.getNom().equals("myMkdir")) {
