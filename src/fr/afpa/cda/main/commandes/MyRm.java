@@ -14,6 +14,7 @@ import java.util.List;
 import fr.afpa.cda.exception.OptionInvalidException;
 import fr.afpa.cda.main.PathMain;
 import fr.afpa.cda.main.dto.CommandeLine;
+import fr.afpa.cda.main.helpers.ReadAllFile;
 
 public class MyRm {
 
@@ -22,6 +23,9 @@ public class MyRm {
 		if (!cmd.getOptions().isEmpty()) {
 			try {
 				optionIsValid(cmd.getOptions());
+				if (cmd.getOptions().contains("-help")) {
+					ReadAllFile.help(cmd);
+				}
 				if (cmd.getOptions().contains("v")) {
 					optionV = myRmOptionV(cmd);
 				}
@@ -41,7 +45,7 @@ public class MyRm {
 
 	private static Boolean optionIsValid(List<String> options) throws OptionInvalidException {
 		for (String option : options) {
-			if (!option.equals("r") && !option.equals("v")) {
+			if (!option.equals("r") && !option.equals("v") && !option.equals("-help")) {
 				throw new OptionInvalidException("l'option entrée est invalide");
 			}
 		}

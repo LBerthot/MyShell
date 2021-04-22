@@ -13,6 +13,7 @@ import java.util.List;
 import fr.afpa.cda.exception.OptionInvalidException;
 import fr.afpa.cda.main.PathMain;
 import fr.afpa.cda.main.dto.CommandeLine;
+import fr.afpa.cda.main.helpers.ReadAllFile;
 
 public class MyRmdir {
 
@@ -22,10 +23,10 @@ public class MyRmdir {
 		} else {
 			try {
 				optionIsValid(cmd.getOptions());
-				for (String opt : cmd.getOptions()) {
-					if (opt.equals("p")) {
-						myRmDirOptionP(cmd);
-					}
+				if (cmd.getOptions().contains("-help")) {
+					ReadAllFile.help(cmd);
+				}if (cmd.getOptions().contains("p")) {
+					myRmDirOptionP(cmd);
 				}
 			} catch (OptionInvalidException e) {
 				System.out.println(e.getMessage());
@@ -75,7 +76,7 @@ public class MyRmdir {
 
 	private static Boolean optionIsValid(List<String> options) throws OptionInvalidException {
 		for (String option : options) {
-			if (!option.equals("p")) {
+			if (!option.equals("p") && !option.equals("-help")) {
 				throw new OptionInvalidException("l'option entrée est invalide");
 			}
 		}

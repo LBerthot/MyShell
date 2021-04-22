@@ -14,6 +14,7 @@ import java.util.List;
 import fr.afpa.cda.exception.OptionInvalidException;
 import fr.afpa.cda.main.PathMain;
 import fr.afpa.cda.main.dto.CommandeLine;
+import fr.afpa.cda.main.helpers.ReadAllFile;
 
 public class MyFind {
 
@@ -23,10 +24,10 @@ public class MyFind {
 		} else {
 			try {
 				optionIsValid(cmd.getOptions());
-				for (String opt : cmd.getOptions()) {
-					if (opt.equals("name")) {
-						myFindOptionName(cmd);
-					}
+				if (cmd.getOptions().contains("-help")) {
+					ReadAllFile.help(cmd);
+				}if (cmd.getOptions().contains("name")) {
+					myFindOptionName(cmd);
 				}
 			} catch (OptionInvalidException e) {
 				System.out.println(e.getMessage());
@@ -64,11 +65,9 @@ public class MyFind {
 		
 	}
 	
-	
-
 	private static Boolean optionIsValid(List<String> options) throws OptionInvalidException {
 		for (String option : options) {
-			if (!option.equals("name")) {
+			if (!option.equals("name") && !option.equals("-help")) {
 				throw new OptionInvalidException("l'option entrée est invalide");
 			}
 		}

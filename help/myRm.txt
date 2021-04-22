@@ -1,0 +1,27 @@
+NAME
+       myRm - remove files or directories
+
+SYNOPSIS
+       myRm [OPTION]... [FILE]...
+
+DESCRIPTION
+       This  manual  page  documents  the  GNU version of rm.  rm removes each
+       specified file.  By default, it does not remove directories.
+
+OPTIONS
+       Remove (unlink) the FILE(s).
+
+       
+       -r
+              remove directories and their contents recursively
+
+       -v
+              explain what is being done
+
+       --help display this help and exit
+
+
+       To  remove a file whose name starts with a '-', for example '-foo', use
+       the command:
+
+              rm ./-foo

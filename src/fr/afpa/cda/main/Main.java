@@ -14,6 +14,7 @@ import fr.afpa.cda.main.commandes.MyPwd;
 import fr.afpa.cda.main.commandes.MyRm;
 import fr.afpa.cda.main.commandes.MyRmdir;
 import fr.afpa.cda.main.commandes.MyTop;
+import fr.afpa.cda.main.commandes.MyWc;
 import fr.afpa.cda.main.dto.CommandeLine;
 
 public class Main {
@@ -54,6 +55,8 @@ public class Main {
 				MyTop.exec(cmd);
 			}else if (cmd.getNom().equals("myCp")) {
 				MyCp.exec(cmd);
+			}else if (cmd.getNom().equals("myWc")) {
+				MyWc.exec(cmd);
 			}
 		}
 		sc.close();
