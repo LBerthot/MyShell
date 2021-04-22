@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,24 +58,22 @@ public class Main {
 				}
 
 			}
+
 			if (cmd.getNom().equals("myMkdir")) {
 
 				if ((!cmd.getOptions().isEmpty()) && cmd.getOptions().get(0).equals("p")) {
 					String[] splitNewDirs = cmd.getParams().get(0).replaceAll("/", " ").split(" ");
 					List<String> newDirs = new ArrayList<String>(Arrays.asList(splitNewDirs));
-					System.out.println("inside the p");
 					for (int i = 0; i < newDirs.size(); i++) {
 						if (i == 0) {
 							String chemin = newDirs.get(0);
 							chemin = PathMain.calculeChemin(chemin);
-							System.out.println(chemin);
 							File f = new File(chemin);
 							f.mkdir();
 						} else {
 							newDirs.set(0, (newDirs.get(0) + "/" + newDirs.get(i)));
 							String chemin = newDirs.get(0);
 							chemin = PathMain.calculeChemin(chemin);
-							System.out.println(chemin);
 							File f = new File(chemin);
 							f.mkdir();
 						}
@@ -90,38 +89,35 @@ public class Main {
 				}
 			}
 
-			if (cmd.getNom().equals("myPwd")) {
-				System.out.println(PathMain.pathMiniShell);
-				continue;
-			}
-			if (cmd.getNom().equals("myCd")) {
-				String chemin = cmd.getParams().get(0);
-				try {
-					chemin = PathMain.calculeCheminDirIfExists(chemin);
-					PathMain.pathMiniShell = chemin;
-				} catch (CheminInvalideException e) {
-					System.out.println(e.getMessage());
-					continue;
-				} catch (CheminRepertoirInvalideException e) {
-					System.out.println(e.getMessage());
-					continue;
-				}
-			}
 			if (cmd.getNom().equals("myRm")) {
 				String chemin = cmd.getParams().get(0);
 				Path path = Paths.get(PathMain.calculeChemin(chemin));
 				try {
 					Files.delete(path);
 				} catch (NoSuchFileException e) {
-					System.out.println("Le fichier ou r�pertoire " + chemin + " n'existe pas");
+					System.out.println("Le fichier ou repertoire " + chemin + " n'existe pas");
 				} catch (DirectoryNotEmptyException e) {
-					System.out.println("Le r�pertoire " + chemin + " n'est pas vide");
+					System.out.println("Le repertoire " + chemin + " n'est pas vide");
 				} catch (IOException e) {
 					System.out.println("Impossible de supprimer " + chemin + " : " + e);
 				}
 			}
 
+			if (cmd.getNom().equals("myMv")) {
+				String cheminSource = cmd.getParams().get(0);
+				System.out.println(cheminSource);
+				Path source = Paths.get(PathMain.calculeChemin(cheminSource));
+				String cheminDestination = cmd.getParams().get(1);
+				System.out.println(cheminDestination);
+				Path destination = Paths.get(PathMain.calculeChemin(cheminDestination));
+				try {
+					Files.move(source, destination,StandardCopyOption.REPLACE_EXISTING);
+				} catch (IOException e) {
+					System.out.println("Impossible, le fichier existe deja");
+				}
+			}
 		}
+
 		System.out.println("Au revoir !");
 	}
 }
