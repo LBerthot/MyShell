@@ -2,9 +2,7 @@ package fr.afpa.cda.main;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -39,15 +37,13 @@ public class Main {
 				System.err.println(e.getMessage());
 				continue;
 			}
+			
 			if (cmd.getNom().equals("myExit")) {
 				break;
-			}
-
-			if (cmd.getNom().equals("myPwd")) {
+			} else if (cmd.getNom().equals("myPwd")) {
 				System.out.println(PathMain.pathMiniShell);
 				continue;
-			}
-			if (cmd.getNom().equals("myCd")) {
+			}else if (cmd.getNom().equals("myCd")) {
 				String chemin = cmd.getParams().get(0);
 				try {
 					chemin = PathMain.calculeCheminDirIfExists(chemin);
@@ -59,9 +55,7 @@ public class Main {
 					System.out.println(e.getMessage());
 					continue;
 				}
-			}
-
-			if (cmd.getNom().equals("myMkdir")) {
+			}else if (cmd.getNom().equals("myMkdir")) {
 				if ((!cmd.getOptions().isEmpty()) && cmd.getOptions().get(0).equals("p")) {
 					String[] splitNewDirs = cmd.getParams().get(0).replaceAll("/", " ").split(" ");
 					List<String> newDirs = new ArrayList<String>(Arrays.asList(splitNewDirs));
@@ -79,7 +73,6 @@ public class Main {
 							f.mkdir();
 						}
 					}
-
 				} else {
 					for (int i = 0; i < cmd.getParams().size(); i++) {
 						String chemin = cmd.getParams().get(i);
@@ -88,31 +81,13 @@ public class Main {
 						f.mkdir();
 					}
 				}
-			}
-
-			if (cmd.getNom().equals("myRm")) {
+			} else if (cmd.getNom().equals("myRm")) {
 				MyRm.exec(cmd);
-				String chemin = cmd.getParams().get(0);
-				Path path = Paths.get(PathMain.calculeChemin(chemin));
-				try {
-					Files.delete(path);
-				} catch (NoSuchFileException e) {
-					System.out.println("Le fichier ou repertoire " + chemin + " n'existe pas");
-				} catch (DirectoryNotEmptyException e) {
-					System.out.println("Le repertoire " + chemin + " n'est pas vide");
-				} catch (IOException e) {
-					System.out.println("Impossible de supprimer " + chemin + " : " + e);
-				}
-			}
-			if (cmd.getNom().equals("myRmDir")) {
+			}else if (cmd.getNom().equals("myRmDir")) {
 				MyRmDir.exec(cmd);
-			}
-			if (cmd.getNom().equals("myFind")) {
+			}else if (cmd.getNom().equals("myFind")) {
 				MyFind.exec(cmd);
-			}
-
-			if (cmd.getNom().equals("myMv")) {
-				
+			}else if (cmd.getNom().equals("myMv")) {
 				String cheminSource = cmd.getParams().get(0);
 				System.out.println(cheminSource);
 				Path source = Paths.get(PathMain.calculeChemin(cheminSource));
@@ -130,7 +105,6 @@ public class Main {
 				}
 			}
 		}
-
 		System.out.println("Au revoir !");
 	}
 }
