@@ -5,8 +5,9 @@ import java.util.Scanner;
 
 import fr.afpa.cda.exception.CommandeIntrouvableException;
 import fr.afpa.cda.exception.CommandeInvalideException;
-import fr.afpa.cda.main.commandes.MyWc;
+import fr.afpa.cda.main.commandes.*;
 import fr.afpa.cda.main.dto.CommandeLine;
+
 
 public class Main {
 
@@ -29,7 +30,7 @@ public class Main {
 			if (cmd.getNom().equals("myExit")) {
 				break;
 			} else if (cmd.getNom().equals("myPwd")) {
-				MyPwd.exec(cmd);
+				MyPwd.exec();
 			}else if (cmd.getNom().equals("myCd")) {
 				MyCd.exec(cmd);
 			}else if (cmd.getNom().equals("myMkdir")) {
