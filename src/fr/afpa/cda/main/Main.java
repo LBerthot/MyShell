@@ -1,28 +1,26 @@
 package fr.afpa.cda.main;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 import fr.afpa.cda.exception.CheminInvalideException;
 import fr.afpa.cda.exception.CheminRepertoirInvalideException;
 import fr.afpa.cda.exception.CommandeIntrouvableException;
 import fr.afpa.cda.exception.CommandeInvalideException;
+import fr.afpa.cda.main.commandes.MyCp;
+import fr.afpa.cda.main.commandes.MyMkdir;
+import fr.afpa.cda.main.commandes.MyMv;
 import fr.afpa.cda.main.commandes.MyRm;
 import fr.afpa.cda.main.dto.CommandeLine;
 
 public class Main {
 
-	public static void main(String[] arg) {
+	public static void main(String[] arg) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		sc.useDelimiter("(\r|\n)+");// permet d'accepter les espaces dans le scanner
 		String saisieUtilisateur = null;
@@ -60,32 +58,7 @@ public class Main {
 			}
 
 			if (cmd.getNom().equals("myMkdir")) {
-				if ((!cmd.getOptions().isEmpty()) && cmd.getOptions().get(0).equals("p")) {
-					String[] splitNewDirs = cmd.getParams().get(0).replaceAll("/", " ").split(" ");
-					List<String> newDirs = new ArrayList<String>(Arrays.asList(splitNewDirs));
-					for (int i = 0; i < newDirs.size(); i++) {
-						if (i == 0) {
-							String chemin = newDirs.get(0);
-							chemin = PathMain.calculeChemin(chemin);
-							File f = new File(chemin);
-							f.mkdir();
-						} else {
-							newDirs.set(0, (newDirs.get(0) + "/" + newDirs.get(i)));
-							String chemin = newDirs.get(0);
-							chemin = PathMain.calculeChemin(chemin);
-							File f = new File(chemin);
-							f.mkdir();
-						}
-					}
-
-				} else {
-					for (int i = 0; i < cmd.getParams().size(); i++) {
-						String chemin = cmd.getParams().get(i);
-						chemin = PathMain.calculeChemin(chemin);
-						File f = new File(chemin);
-						f.mkdir();
-					}
-				}
+				MyMkdir.exec(cmd);
 			}
 
 			if (cmd.getNom().equals("myRm")) {
@@ -104,22 +77,16 @@ public class Main {
 			}
 
 			if (cmd.getNom().equals("myMv")) {
+				MyMv.exec(cmd);
+	
+			}
+			
+			if (cmd.getNom().equals("myTop")) {
 				
-				String cheminSource = cmd.getParams().get(0);
-				System.out.println(cheminSource);
-				Path source = Paths.get(PathMain.calculeChemin(cheminSource));
-				String cheminDestination = cmd.getParams().get(1);
-				System.out.println(cheminDestination);
-				Path destination = Paths.get(PathMain.calculeChemin(cheminDestination));
-				try {
-					Files.move(source, destination,StandardCopyOption.REPLACE_EXISTING);
-				} catch (IOException e) {
-					System.out.println("Impossible, le fichier existe deja");
-				} finally {
-					if ((!cmd.getOptions().isEmpty()) && cmd.getOptions().get(0).equals("v")) {
-					System.out.println("renamed" + "'" + source.toAbsolutePath() + "'" + "->" + "'" + destination.toAbsolutePath() + "'");
-					}
-				}
+			}
+			
+			if (cmd.getNom().equals("myCp")) {
+				MyCp.exec(cmd);
 			}
 		}
 
