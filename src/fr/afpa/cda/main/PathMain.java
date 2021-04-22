@@ -18,7 +18,7 @@ public class PathMain {
 	public static String pathMiniShell;
 	static {
 
-		String[] allCommandes = { "myPwd", "myCd", "myMkdir", "myExit", "myRm", "myRmDir", "myFind" };
+		String[] allCommandes = { "myPwd", "myCd", "myMkdir", "myExit", "myRm", "myRmdir", "myFind" };
 
 		ALL_COMMANDES = new ArrayList<>(Arrays.asList(allCommandes));
 

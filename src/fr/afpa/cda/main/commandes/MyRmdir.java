@@ -14,7 +14,7 @@ import fr.afpa.cda.exception.OptionInvalidException;
 import fr.afpa.cda.main.PathMain;
 import fr.afpa.cda.main.dto.CommandeLine;
 
-public class MyRmDir {
+public class MyRmdir {
 
 	public static void exec(CommandeLine cmd) {
 		if (cmd.getOptions().isEmpty()) {

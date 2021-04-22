@@ -17,7 +17,7 @@ import fr.afpa.cda.exception.CommandeIntrouvableException;
 import fr.afpa.cda.exception.CommandeInvalideException;
 import fr.afpa.cda.main.commandes.MyFind;
 import fr.afpa.cda.main.commandes.MyRm;
-import fr.afpa.cda.main.commandes.MyRmDir;
+import fr.afpa.cda.main.commandes.MyRmdir;
 import fr.afpa.cda.main.dto.CommandeLine;
 
 public class Main {
@@ -83,8 +83,8 @@ public class Main {
 				}
 			} else if (cmd.getNom().equals("myRm")) {
 				MyRm.exec(cmd);
-			}else if (cmd.getNom().equals("myRmDir")) {
-				MyRmDir.exec(cmd);
+			}else if (cmd.getNom().equals("myRmdir")) {
+				MyRmdir.exec(cmd);
 			}else if (cmd.getNom().equals("myFind")) {
 				MyFind.exec(cmd);
 			}else if (cmd.getNom().equals("myMv")) {
