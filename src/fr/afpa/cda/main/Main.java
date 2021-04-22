@@ -5,15 +5,6 @@ import java.util.Scanner;
 
 import fr.afpa.cda.exception.CommandeIntrouvableException;
 import fr.afpa.cda.exception.CommandeInvalideException;
-import fr.afpa.cda.main.commandes.MyCd;
-import fr.afpa.cda.main.commandes.MyCp;
-import fr.afpa.cda.main.commandes.MyFind;
-import fr.afpa.cda.main.commandes.MyMkdir;
-import fr.afpa.cda.main.commandes.MyMv;
-import fr.afpa.cda.main.commandes.MyPwd;
-import fr.afpa.cda.main.commandes.MyRm;
-import fr.afpa.cda.main.commandes.MyRmdir;
-import fr.afpa.cda.main.commandes.MyTop;
 import fr.afpa.cda.main.commandes.MyWc;
 import fr.afpa.cda.main.dto.CommandeLine;
 
@@ -64,27 +55,3 @@ public class Main {
 	}
 }
 
-/*
- * public static void main(String[] args) {
- * 
- * Scanner sc =new Scanner(System.in);
- * 
- * 
- * while (true) { String[] inputUser = sc.nextLine().split(" "); String[]
- * command = new String[2]; command[0]=inputUser[0];
- * 
- * switch (command[0]) { case "myPwd": MyPwd.exec() ; break; case"myCd":
- * MyCd.exec(); break; case"myRmdir": MyRmdir.exec(); break; case "myRm":
- * MyRm.exec(); break; case "myTouch": MyTouch.exec(); break; case "myCat":
- * MyCat.exec(); break; case "myTail": MyTail.exec(); break; case "myWc":
- * MyWc.exec(); break; case "myCp": MyCp.exec(); break; case "myMv":
- * MyMv.exec(); break; case "myTop": MyTop.exec(); break; case "myFind":
- * MyFind.exec(); break; case "myExit": MyExit.exec(); break; case "myMan":
- * MyMan.exec(); break;
- * 
- * default:System.out.println("Commande invalide "); }
- * 
- * }
- * 
- * }
- */

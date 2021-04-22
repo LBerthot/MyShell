@@ -8,6 +8,7 @@ import fr.afpa.cda.main.dto.CommandeLine;
 public class MyCd {
 
 	public static void exec(CommandeLine cmd) {
+
 		String chemin = cmd.getParams().get(0);
 		try {
 			chemin = PathMain.calculeCheminDirIfExists(chemin);
@@ -17,7 +18,5 @@ public class MyCd {
 		} catch (CheminRepertoirInvalideException e) {
 			System.out.println(e.getMessage());
 		}
-		
 	}
-
 }
