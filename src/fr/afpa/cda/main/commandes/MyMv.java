@@ -14,10 +14,8 @@ public class MyMv {
 	public static void exec(CommandeLine cmd) {
 		
 		String cheminSource = cmd.getParams().get(0);
-		System.out.println(cheminSource);
 		Path source = Paths.get(PathMain.calculeChemin(cheminSource));
 		String cheminDestination = cmd.getParams().get(1);
-		System.out.println(cheminDestination);
 		Path destination = Paths.get(PathMain.calculeChemin(cheminDestination));
 		try {
 			Files.move(source, destination,StandardCopyOption.REPLACE_EXISTING);
