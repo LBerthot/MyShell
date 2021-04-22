@@ -20,6 +20,7 @@ public class MyCp {
 		
 		File[] files = file.listFiles();
 
+		try {
 		for (File f : files) {
 			if (f.isDirectory()) {
 				System.out.println("directory: " + f.toString());
@@ -29,6 +30,9 @@ public class MyCp {
 				dest = destination + f.getName().toString();
 				copy(dest, f.toString());
 			}
+
+		} catch (IOException e) { 
+			System.out.println("cp: cannot copy '" + file.getName().toString() + "' : No such file or directory");
 
 		}
 
