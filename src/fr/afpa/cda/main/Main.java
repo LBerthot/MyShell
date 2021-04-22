@@ -3,16 +3,17 @@ package fr.afpa.cda.main;
 import java.io.IOException;
 import java.util.Scanner;
 
-import fr.afpa.cda.exception.CheminInvalideException;
-import fr.afpa.cda.exception.CheminRepertoirInvalideException;
 import fr.afpa.cda.exception.CommandeIntrouvableException;
 import fr.afpa.cda.exception.CommandeInvalideException;
-import fr.afpa.cda.main.commandes.MyFind;
+import fr.afpa.cda.main.commandes.MyCd;
 import fr.afpa.cda.main.commandes.MyCp;
+import fr.afpa.cda.main.commandes.MyFind;
 import fr.afpa.cda.main.commandes.MyMkdir;
 import fr.afpa.cda.main.commandes.MyMv;
+import fr.afpa.cda.main.commandes.MyPwd;
 import fr.afpa.cda.main.commandes.MyRm;
 import fr.afpa.cda.main.commandes.MyRmdir;
+import fr.afpa.cda.main.commandes.MyTop;
 import fr.afpa.cda.main.dto.CommandeLine;
 
 public class Main {
@@ -36,20 +37,9 @@ public class Main {
 			if (cmd.getNom().equals("myExit")) {
 				break;
 			} else if (cmd.getNom().equals("myPwd")) {
-				System.out.println(PathMain.pathMiniShell);
-				continue;
+				MyPwd.exec(cmd);
 			}else if (cmd.getNom().equals("myCd")) {
-				String chemin = cmd.getParams().get(0);
-				try {
-					chemin = PathMain.calculeCheminDirIfExists(chemin);
-					PathMain.pathMiniShell = chemin;
-				} catch (CheminInvalideException e) {
-					System.out.println(e.getMessage());
-					continue;
-				} catch (CheminRepertoirInvalideException e) {
-					System.out.println(e.getMessage());
-					continue;
-				}
+				MyCd.exec(cmd);
 			}else if (cmd.getNom().equals("myMkdir")) {
 				MyMkdir.exec(cmd);
 			}else if (cmd.getNom().equals("myRm")) {
@@ -61,11 +51,12 @@ public class Main {
 			}else if (cmd.getNom().equals("myMv")) {
 				MyMv.exec(cmd);
 			}else if (cmd.getNom().equals("myTop")) {
-				
+				MyTop.exec(cmd);
 			}else if (cmd.getNom().equals("myCp")) {
 				MyCp.exec(cmd);
 			}
 		}
+		sc.close();
 		System.out.println("Au revoir !");
 	}
 }
