@@ -47,7 +47,7 @@ public class MyFind {
 			glob += cmd.getParams().get(0);
 		}
 		final PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher(glob);
-		Files.walkFileTree(Paths.get(chemin), new SimpleFileVisitor<Path>() {
+		Files.walkFileTree(Paths.get(PathMain.calculeChemin(chemin)), new SimpleFileVisitor<Path>() {
 			@Override
 			public FileVisitResult visitFile(Path file, BasicFileAttributes attr) throws IOException {
 				if (pathMatcher.matches(file)) {

@@ -14,7 +14,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		sc.useDelimiter("(\r|\n)+");// permet d'accepter les espaces dans le scanner
 		String saisieUtilisateur = null;
-
+		System.out.println("Bienvenue sur MyShell. Syst�me d'exploitation : " +System.getProperty("os.name").toLowerCase());
 		while (true) {
 			System.out.print("$myShell:" + PathMain.pathMiniShell + "> ");
 			saisieUtilisateur = sc.next();
@@ -36,44 +36,21 @@ public class Main {
 				MyMkdir.exec(cmd);
 			}else if (cmd.getNom().equals("myRm")) {
 				MyRm.exec(cmd);
-			}else if (cmd.getNom().equals("myRmDir")) {
-				MyRmDir.exec(cmd);
+			}else if (cmd.getNom().equals("myRmdir")) {
+				MyRmdir.exec(cmd);
 			}else if (cmd.getNom().equals("myFind")) {
 				MyFind.exec(cmd);
 			}else if (cmd.getNom().equals("myMv")) {
 				MyMv.exec(cmd);
 			}else if (cmd.getNom().equals("myTop")) {
-				
+				MyTop.exec(cmd);
 			}else if (cmd.getNom().equals("myCp")) {
 				MyCp.exec(cmd);
 			}
 		}
+		sc.close();
 		System.out.println("Au revoir !");
 		sc.close();
 	}
 }
 
-/*
- * public static void main(String[] args) {
- * 
- * Scanner sc =new Scanner(System.in);
- * 
- * 
- * while (true) { String[] inputUser = sc.nextLine().split(" "); String[]
- * command = new String[2]; command[0]=inputUser[0];
- * 
- * switch (command[0]) { case "myPwd": MyPwd.exec() ; break; case"myCd":
- * MyCd.exec(); break; case"myRmdir": MyRmdir.exec(); break; case "myRm":
- * MyRm.exec(); break; case "myTouch": MyTouch.exec(); break; case "myCat":
- * MyCat.exec(); break; case "myTail": MyTail.exec(); break; case "myWc":
- * MyWc.exec(); break; case "myCp": MyCp.exec(); break; case "myMv":
- * MyMv.exec(); break; case "myTop": MyTop.exec(); break; case "myFind":
- * MyFind.exec(); break; case "myExit": MyExit.exec(); break; case "myMan":
- * MyMan.exec(); break;
- * 
- * default:System.out.println("Commande invalide "); }
- * 
- * }
- * 
- * }
- */

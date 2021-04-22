@@ -10,7 +10,6 @@ public class MyCd {
 	public static void exec(CommandeLine cmd) {
 
 		String chemin = cmd.getParams().get(0);
-
 		try {
 			chemin = PathMain.calculeCheminDirIfExists(chemin);
 			PathMain.pathMiniShell = chemin;
