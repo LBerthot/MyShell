@@ -1,12 +1,11 @@
 package fr.afpa.cda.main.commandes;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-import fr.afpa.cda.main.PathMain;
 import fr.afpa.cda.main.dto.CommandeLine;
 
 public class MyMv {
@@ -14,19 +13,18 @@ public class MyMv {
 	public static void exec(CommandeLine cmd) {
 		
 		String cheminSource = cmd.getParams().get(0);
-		Path source = Paths.get(PathMain.calculeChemin(cheminSource));
 		String cheminDestination = cmd.getParams().get(1);
-		Path destination = Paths.get(PathMain.calculeChemin(cheminDestination));
+		File file = new File(cheminSource);
+		cheminDestination += "/" + file.getName().toString() + "/";
 		try {
-			Files.move(source, destination,StandardCopyOption.REPLACE_EXISTING);
+			Files.move(Paths.get(cheminSource), Paths.get(cheminDestination),StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
 			System.out.println("Impossible, le fichier existe deja");
 		} finally {
 			if ((!cmd.getOptions().isEmpty()) && cmd.getOptions().get(0).equals("v")) {
-			System.out.println("renamed" + "'" + source.toAbsolutePath() + "'" + "->" + "'" + destination.toAbsolutePath() + "'");
+			System.out.println("renamed" + "'" + cheminSource + "'" + "->" + "'" + cheminDestination + "'");
 			}
 		}
 		
 	}
-
 }
