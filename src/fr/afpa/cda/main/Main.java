@@ -104,6 +104,7 @@ public class Main {
 			}
 
 			if (cmd.getNom().equals("myMv")) {
+				
 				String cheminSource = cmd.getParams().get(0);
 				System.out.println(cheminSource);
 				Path source = Paths.get(PathMain.calculeChemin(cheminSource));
@@ -114,6 +115,10 @@ public class Main {
 					Files.move(source, destination,StandardCopyOption.REPLACE_EXISTING);
 				} catch (IOException e) {
 					System.out.println("Impossible, le fichier existe deja");
+				} finally {
+					if ((!cmd.getOptions().isEmpty()) && cmd.getOptions().get(0).equals("v")) {
+					System.out.println("renamed" + "'" + source.toAbsolutePath() + "'" + "->" + "'" + destination.toAbsolutePath() + "'");
+					}
 				}
 			}
 		}
