@@ -26,7 +26,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		sc.useDelimiter("(\r|\n)+");// permet d'accepter les espaces dans le scanner
 		String saisieUtilisateur = null;
-
+		System.out.println("Bienvenue sur MyShell. Système d'exploitation : " +System.getProperty("os.name").toLowerCase());
 		while (true) {
 			System.out.print("$myShell:" + PathMain.pathMiniShell + "> ");
 			saisieUtilisateur = sc.next();
