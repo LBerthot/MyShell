@@ -30,8 +30,6 @@ public class MyCp {
 					dest = destination + f.getName().toString();
 					copy(dest, f.toString());
 				}
-
-			
 			} 
 		}catch (IOException e) { 
 			System.out.println("cp: cannot copy '" + file.getName().toString() + "' : No such file or directory");
