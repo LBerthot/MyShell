@@ -49,6 +49,8 @@ public class Main {
 				MyCp.exec(cmd);
 			}else if (cmd.getNom().equals("myWc")) {
 				MyWc.exec(cmd);
+			}else if (cmd.getNom().equals("myCat")) {
+				MyCat.exec(cmd);
 			}
 		}
 		sc.close();
