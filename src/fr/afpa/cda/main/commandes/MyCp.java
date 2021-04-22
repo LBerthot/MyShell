@@ -21,22 +21,24 @@ public class MyCp {
 		File[] files = file.listFiles();
 
 		try {
-		for (File f : files) {
-			if (f.isDirectory()) {
-				System.out.println("directory: " + f.toString());
-				exec(cmd);
-			} else {
-				System.out.println("file: " + f.toString());
-				dest = destination + f.getName().toString();
-				copy(dest, f.toString());
-			}
+			for (File f : files) {
+				if (f.isDirectory()) {
+					System.out.println("directory: " + f.toString());
+					exec(cmd);
+				} else {
+					System.out.println("file: " + f.toString());
+					dest = destination + f.getName().toString();
+					copy(dest, f.toString());
+				}
 
-		} catch (IOException e) { 
+			
+			} 
+		}catch (IOException e) { 
 			System.out.println("cp: cannot copy '" + file.getName().toString() + "' : No such file or directory");
 
-		}
-
+			}
 	}
+
 
 	public static void copy(String source, String destination) throws IOException {
 
