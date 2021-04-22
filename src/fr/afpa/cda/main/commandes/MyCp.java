@@ -35,16 +35,21 @@ public class MyCp {
 			} 
 		}catch (IOException e) { 
 			System.out.println("cp: cannot copy '" + file.getName().toString() + "' : No such file or directory");
+		}catch (NullPointerException e) { 
+			System.out.println("cp: cannot copy '" + file.getName().toString() + "' : No such file or directory");
+		}
+}
 
-			}
-	}
 
-
-	public static void copy(String source, String destination) throws IOException {
-
+	public static void copy(String source, String destination) {
 		Path sourcePath = Paths.get(source);
 		Path destinationPath = Paths.get(destination);
+		try {
 		Files.copy(sourcePath, destinationPath);
+		}catch (IOException e) { 
+			System.out.println("cp: cannot copy '" + sourcePath.getFileName() + "' : No such file or directory");
+			System.out.println();;
+		}
 
 	}
 
