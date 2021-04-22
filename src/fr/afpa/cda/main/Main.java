@@ -17,7 +17,9 @@ import fr.afpa.cda.exception.CheminInvalideException;
 import fr.afpa.cda.exception.CheminRepertoirInvalideException;
 import fr.afpa.cda.exception.CommandeIntrouvableException;
 import fr.afpa.cda.exception.CommandeInvalideException;
+import fr.afpa.cda.main.commandes.MyFind;
 import fr.afpa.cda.main.commandes.MyRm;
+import fr.afpa.cda.main.commandes.MyRmDir;
 import fr.afpa.cda.main.dto.CommandeLine;
 
 public class Main {
@@ -101,6 +103,12 @@ public class Main {
 				} catch (IOException e) {
 					System.out.println("Impossible de supprimer " + chemin + " : " + e);
 				}
+			}
+			if (cmd.getNom().equals("myRmDir")) {
+				MyRmDir.exec(cmd);
+			}
+			if (cmd.getNom().equals("myFind")) {
+				MyFind.exec(cmd);
 			}
 
 			if (cmd.getNom().equals("myMv")) {

@@ -17,7 +17,9 @@ public class PathMain {
 	private final static List<String> ALL_COMMANDES;
 	public static String pathMiniShell;
 	static {
-		String[] allCommandes = { "myPwd", "myCd", "myMkdir", "myExit", "myMv", "myRm" };
+
+		String[] allCommandes = { "myPwd", "myCd", "myMkdir", "myExit", "myRm", "myRmDir", "myFind" };
+
 		ALL_COMMANDES = new ArrayList<>(Arrays.asList(allCommandes));
 
 		Path monChemin = Paths.get(".");// permet de se situer avec le "."
@@ -79,4 +81,6 @@ public class PathMain {
 	public static boolean isCommande(String commande) {
 		return ALL_COMMANDES.contains(commande);
 	}
+	
+	
 }

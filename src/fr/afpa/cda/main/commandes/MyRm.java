@@ -80,7 +80,6 @@ public class MyRm {
 				return FileVisitResult.CONTINUE;
 			}
 		});
-
 	}
 
 	private static void myRmWithoutOption(CommandeLine cmd) {
