@@ -1,0 +1,10 @@
+NAME
+       myPwd - print name of current/working directory
+
+SYNOPSIS
+       myPwd ...
+
+DESCRIPTION
+	Print the full filename of the current working directory.
+
+	--help display this help

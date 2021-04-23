@@ -1,0 +1,16 @@
+NAME
+       myMkdir - make directories
+
+SYNOPSIS
+       myMkdir [OPTION]... DIRECTORY...
+
+DESCRIPTION
+       Create the DIRECTORY(ies), if they do not already exist.
+
+       Mandatory  arguments  to  long  options are mandatory for short options
+       too.
+
+       -p
+              no error if existing, make parent directories as needed
+
+       --help display this help
