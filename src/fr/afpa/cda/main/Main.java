@@ -49,6 +49,10 @@ public class Main {
 				MyCp.exec(cmd);
 			}else if (cmd.getNom().equals("myWc")) {
 				MyWc.exec(cmd);
+			}else if (cmd.getNom().equals("myTouch")) {
+				MyTouch.exec(cmd);
+			}else if (cmd.getNom().equals("myTail")) {
+				MyTail.exec(cmd);
 			}
 		}
 		sc.close();
