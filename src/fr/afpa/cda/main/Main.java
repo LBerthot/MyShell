@@ -42,7 +42,7 @@ public class Main {
 			}else if (cmd.getNom().equals("myMv")) {
 				MyMv.exec(cmd);
 			}else if (cmd.getNom().equals("myTop")) {
-				MyTop.exec(cmd);
+				MyTop.exec();
 			}else if (cmd.getNom().equals("myCp")) {
 				MyCp.exec(cmd);
 			}
