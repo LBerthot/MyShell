@@ -51,6 +51,10 @@ public class Main {
 				MyWc.exec(cmd);
 			}else if (cmd.getNom().equals("myCat")) {
 				MyCat.exec(cmd);
+			}else if (cmd.getNom().equals("myTouch")) {
+				MyTouch.exec(cmd);
+			}else if (cmd.getNom().equals("myTail")) {
+				MyTail.exec(cmd);
 			}
 		}
 		sc.close();
