@@ -17,7 +17,7 @@ public class MyTail {
 	public static void exec(CommandeLine cmd) {
 
 		String chemin = cmd.getParams().get(0);
-		Path path = Paths.get(PathMain.calculeChemin(chemin)); // indique le path
+		Path path = Paths.get(PathMain.calculeChemin(chemin)); // indique le paths
 
 		try {
 			List<String> lignes = Files.readAllLines(path, StandardCharsets.UTF_8);// initialise une liste pour compter
