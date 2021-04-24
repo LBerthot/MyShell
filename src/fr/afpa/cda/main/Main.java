@@ -48,7 +48,7 @@ public class Main {
 			}else if (cmd.getNom().equals("myCp")) {
 				MyCp.exec(cmd);
 			}else if (cmd.getNom().equals("myWc")) {
-				MyWc.exec(cmd);
+
 			}else if (cmd.getNom().equals("myCat")) {
 				MyCat.exec(cmd);
 			}else if (cmd.getNom().equals("myTouch")) {
