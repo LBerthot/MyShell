@@ -11,6 +11,7 @@ import fr.afpa.cda.exception.CheminInvalideException;
 import fr.afpa.cda.exception.CheminRepertoirInvalideException;
 import fr.afpa.cda.exception.CommandeIntrouvableException;
 import fr.afpa.cda.exception.CommandeInvalideException;
+import fr.afpa.cda.exception.OptionInvalidException;
 import fr.afpa.cda.main.dto.CommandeLine;
 
 public class PathMain {
@@ -81,5 +82,12 @@ public class PathMain {
 		return ALL_COMMANDES.contains(commande);
 	}
 	
-	
+	public static Boolean optionIsValid(List<String> options, List<String> allOptions) throws OptionInvalidException {
+		for (String option : options) {
+			if (!allOptions.contains(option)) {
+				throw new OptionInvalidException("l'option entrée est invalide");
+			}
+		}
+		return true;
+	}
 }

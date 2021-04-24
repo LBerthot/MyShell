@@ -9,6 +9,8 @@ import java.nio.file.PathMatcher;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import fr.afpa.cda.exception.OptionInvalidException;
@@ -17,13 +19,19 @@ import fr.afpa.cda.main.dto.CommandeLine;
 import fr.afpa.cda.main.helpers.ReadAllFile;
 
 public class MyFind {
-
+	private final static List<String> ALL_OPTIONS;
+	
+	static {
+	String[] allOptions = {"-help", "name"};
+	ALL_OPTIONS = new ArrayList<>(Arrays.asList(allOptions));
+	}
+	
 	public static void exec(CommandeLine cmd) {
 		if (cmd.getOptions().isEmpty()) {
 			System.out.println("Commande invalide");
 		} else {
 			try {
-				optionIsValid(cmd.getOptions());
+				PathMain.optionIsValid(cmd.getOptions(), ALL_OPTIONS);
 				if (cmd.getOptions().contains("-help")) {
 					ReadAllFile.help(cmd);
 				}if (cmd.getOptions().contains("name")) {
@@ -63,14 +71,5 @@ public class MyFind {
 			}
 		});
 		
-	}
-	
-	private static Boolean optionIsValid(List<String> options) throws OptionInvalidException {
-		for (String option : options) {
-			if (!option.equals("name") && !option.equals("-help")) {
-				throw new OptionInvalidException("l'option entrée est invalide");
-			}
-		}
-		return true;
 	}
 }

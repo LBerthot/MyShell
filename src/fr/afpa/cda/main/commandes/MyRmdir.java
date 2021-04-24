@@ -8,6 +8,8 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import fr.afpa.cda.exception.OptionInvalidException;
@@ -16,13 +18,19 @@ import fr.afpa.cda.main.dto.CommandeLine;
 import fr.afpa.cda.main.helpers.ReadAllFile;
 
 public class MyRmdir {
-
+	private final static List<String> ALL_OPTIONS;
+	
+	static {
+	String[] allOptions = {"-help", "p"};
+	ALL_OPTIONS = new ArrayList<>(Arrays.asList(allOptions));
+	}
+	
 	public static void exec(CommandeLine cmd) {
 		if (cmd.getOptions().isEmpty()) {
 			myRmDirWithoutOption(cmd);
 		} else {
 			try {
-				optionIsValid(cmd.getOptions());
+				PathMain.optionIsValid(cmd.getOptions(), ALL_OPTIONS);
 				if (cmd.getOptions().contains("-help")) {
 					ReadAllFile.help(cmd);
 				}if (cmd.getOptions().contains("p")) {
@@ -73,14 +81,4 @@ public class MyRmdir {
 			System.out.println("Impossible de supprimer " + chemin + " : " + e);
 		}
 	}
-
-	private static Boolean optionIsValid(List<String> options) throws OptionInvalidException {
-		for (String option : options) {
-			if (!option.equals("p") && !option.equals("-help")) {
-				throw new OptionInvalidException("l'option entrée est invalide");
-			}
-		}
-		return true;
-	}
-
 }
