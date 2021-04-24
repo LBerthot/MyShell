@@ -1,6 +1,8 @@
 package fr.afpa.cda.main.commandes;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import fr.afpa.cda.exception.OptionInvalidException;
@@ -9,13 +11,19 @@ import fr.afpa.cda.main.dto.CommandeLine;
 import fr.afpa.cda.main.helpers.ReadAllFile;
 
 public class MyPwd {
-
+	private final static List<String> ALL_OPTIONS;
+	
+	static {
+	String[] allOptions = {"-help"};
+	ALL_OPTIONS = new ArrayList<>(Arrays.asList(allOptions));
+	}
+	
 	public static void exec(CommandeLine cmd) {
 		try {
 			if (cmd.getOptions().isEmpty()) {
 				System.out.println(PathMain.pathMiniShell);
 			} else {
-				optionIsValid(cmd.getOptions());
+				PathMain.optionIsValid(cmd.getOptions(), ALL_OPTIONS);
 				if (cmd.getOptions().contains("-help")) {
 					ReadAllFile.help(cmd);
 				}
@@ -27,13 +35,5 @@ public class MyPwd {
 		}
 	}
 
-	private static Boolean optionIsValid(List<String> options) throws OptionInvalidException {
-		for (String option : options) {
-			if (!option.equals("-help")) {
-				throw new OptionInvalidException("l'option entrée est invalide");
-			}
-		}
-		return true;
-	}
 
 }

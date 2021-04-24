@@ -9,6 +9,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import fr.afpa.cda.exception.OptionInvalidException;
@@ -17,12 +19,18 @@ import fr.afpa.cda.main.dto.CommandeLine;
 import fr.afpa.cda.main.helpers.ReadAllFile;
 
 public class MyRm {
-
+	private final static List<String> ALL_OPTIONS;
+	
+	static {
+	String[] allOptions = {"-help", "v", "r"};
+	ALL_OPTIONS = new ArrayList<>(Arrays.asList(allOptions));
+	}
+	
 	public static void exec(CommandeLine cmd) {
 		Boolean optionV = false;
 		if (!cmd.getOptions().isEmpty()) {
 			try {
-				optionIsValid(cmd.getOptions());
+				PathMain.optionIsValid(cmd.getOptions(), ALL_OPTIONS);
 				if (cmd.getOptions().contains("-help")) {
 					ReadAllFile.help(cmd);
 				}
@@ -43,14 +51,6 @@ public class MyRm {
 		}
 	}
 
-	private static Boolean optionIsValid(List<String> options) throws OptionInvalidException {
-		for (String option : options) {
-			if (!option.equals("r") && !option.equals("v") && !option.equals("-help")) {
-				throw new OptionInvalidException("l'option entrée est invalide");
-			}
-		}
-		return true;
-	}
 
 	private static Boolean myRmOptionV(CommandeLine cmd) {
 		return true;

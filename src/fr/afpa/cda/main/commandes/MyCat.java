@@ -5,6 +5,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import fr.afpa.cda.exception.OptionInvalidException;
@@ -13,13 +15,19 @@ import fr.afpa.cda.main.dto.CommandeLine;
 import fr.afpa.cda.main.helpers.ReadAllFile;
 
 public class MyCat {
-
+	private final static List<String> ALL_OPTIONS;
+	
+	static {
+	String[] allOptions = {"-help"};
+	ALL_OPTIONS = new ArrayList<>(Arrays.asList(allOptions));
+	}
+	
 	public static void exec(CommandeLine cmd) {
 		try {
 			if (cmd.getOptions().isEmpty()) {
 				myCatWithoutOption(cmd);
 			} else {
-				optionIsValid(cmd.getOptions());
+				PathMain.optionIsValid(cmd.getOptions(), ALL_OPTIONS);
 				if (cmd.getOptions().contains("-help")) {
 					ReadAllFile.help(cmd);
 				}
@@ -41,14 +49,4 @@ public class MyCat {
 			}
 		}
 	}
-
-	private static Boolean optionIsValid(List<String> options) throws OptionInvalidException {
-		for (String option : options) {
-			if (!option.equals("-help")) {
-				throw new OptionInvalidException("l'option entrée est invalide");
-			}
-		}
-		return true;
-	}
-
 }
