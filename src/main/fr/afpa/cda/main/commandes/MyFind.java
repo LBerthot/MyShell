@@ -14,18 +14,18 @@ import java.util.Arrays;
 import java.util.List;
 
 import fr.afpa.cda.exception.OptionInvalidException;
-import fr.afpa.cda.main.PathMain;
 import fr.afpa.cda.main.dto.CommandeLine;
+import fr.afpa.cda.main.helpers.PathMain;
 import fr.afpa.cda.main.helpers.ReadAllFile;
 
 public class MyFind {
 	private final static List<String> ALL_OPTIONS;
-	
+
 	static {
-	String[] allOptions = {"-help", "name"};
-	ALL_OPTIONS = new ArrayList<>(Arrays.asList(allOptions));
+		String[] allOptions = { "-help", "name" };
+		ALL_OPTIONS = new ArrayList<>(Arrays.asList(allOptions));
 	}
-	
+
 	public static void exec(CommandeLine cmd) {
 		if (cmd.getOptions().isEmpty()) {
 			System.out.println("Commande invalide");
@@ -34,7 +34,8 @@ public class MyFind {
 				PathMain.optionIsValid(cmd.getOptions(), ALL_OPTIONS);
 				if (cmd.getOptions().contains("-help")) {
 					ReadAllFile.help(cmd);
-				}if (cmd.getOptions().contains("name")) {
+				}
+				if (cmd.getOptions().contains("name")) {
 					myFindOptionName(cmd);
 				}
 			} catch (OptionInvalidException e) {
@@ -45,13 +46,13 @@ public class MyFind {
 		}
 	}
 
-	private static void myFindOptionName(CommandeLine cmd) throws IOException {
+	public static void myFindOptionName(CommandeLine cmd) throws IOException {
 		String chemin = null;
 		String glob = "glob:**/";
-		if (cmd.getParams().size() >1) {
+		if (cmd.getParams().size() > 1) {
 			chemin = cmd.getParams().get(0);
 			glob += cmd.getParams().get(1);
-		}else {
+		} else {
 			chemin = PathMain.pathMiniShell;
 			glob += cmd.getParams().get(0);
 		}
@@ -70,6 +71,6 @@ public class MyFind {
 				return FileVisitResult.CONTINUE;
 			}
 		});
-		
+
 	}
 }

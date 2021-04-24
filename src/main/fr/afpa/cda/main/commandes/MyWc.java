@@ -8,8 +8,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import fr.afpa.cda.main.PathMain;
 import fr.afpa.cda.main.dto.CommandeLine;
+import fr.afpa.cda.main.helpers.PathMain;
 
 public class MyWc {
 

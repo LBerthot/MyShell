@@ -3,8 +3,8 @@ package fr.afpa.cda.main.commandes;
 import java.io.File;
 import java.io.IOException;
 
-import fr.afpa.cda.main.PathMain;
 import fr.afpa.cda.main.dto.CommandeLine;
+import fr.afpa.cda.main.helpers.PathMain;
 
 public class MyTouch {
 

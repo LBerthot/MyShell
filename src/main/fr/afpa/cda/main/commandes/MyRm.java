@@ -14,8 +14,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import fr.afpa.cda.exception.OptionInvalidException;
-import fr.afpa.cda.main.PathMain;
 import fr.afpa.cda.main.dto.CommandeLine;
+import fr.afpa.cda.main.helpers.PathMain;
 import fr.afpa.cda.main.helpers.ReadAllFile;
 
 public class MyRm {
@@ -52,12 +52,12 @@ public class MyRm {
 	}
 
 
-	private static Boolean myRmOptionV(CommandeLine cmd) {
+	public static Boolean myRmOptionV(CommandeLine cmd) {
 		return true;
 
 	}
 
-	private static void myRmOptionR(CommandeLine cmd, Boolean optionV) throws IOException {
+	public static void myRmOptionR(CommandeLine cmd, Boolean optionV) throws IOException {
 		String chemin = cmd.getParams().get(0);
 		Path path = Paths.get(PathMain.calculeChemin(chemin));
 		Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
@@ -81,7 +81,7 @@ public class MyRm {
 		});
 	}
 
-	private static void myRmWithoutOption(CommandeLine cmd, Boolean optionV) {
+	public static void myRmWithoutOption(CommandeLine cmd, Boolean optionV) {
 		String chemin = cmd.getParams().get(0);
 		Path path = Paths.get(PathMain.calculeChemin(chemin));
 		try {

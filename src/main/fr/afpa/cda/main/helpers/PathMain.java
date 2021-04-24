@@ -1,4 +1,4 @@
-package fr.afpa.cda.main;
+package fr.afpa.cda.main.helpers;
 
 import java.io.File;
 import java.nio.file.Path;

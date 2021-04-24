@@ -2,8 +2,8 @@ package fr.afpa.cda.main.commandes;
 
 import fr.afpa.cda.exception.CheminInvalideException;
 import fr.afpa.cda.exception.CheminRepertoirInvalideException;
-import fr.afpa.cda.main.PathMain;
 import fr.afpa.cda.main.dto.CommandeLine;
+import fr.afpa.cda.main.helpers.PathMain;
 
 public class MyCd {
 

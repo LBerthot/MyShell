@@ -10,8 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import fr.afpa.cda.exception.OptionInvalidException;
-import fr.afpa.cda.main.PathMain;
 import fr.afpa.cda.main.dto.CommandeLine;
+import fr.afpa.cda.main.helpers.PathMain;
 import fr.afpa.cda.main.helpers.ReadAllFile;
 
 public class MyCat {
@@ -39,7 +39,7 @@ public class MyCat {
 		}
 	}
 
-	private static void myCatWithoutOption(CommandeLine cmd) throws IOException {
+	public static void myCatWithoutOption(CommandeLine cmd) throws IOException {
 		for (int i = 0; i < cmd.getParams().size(); i++) {
 			String chemin = cmd.getParams().get(i);
 			Path path = Paths.get(PathMain.calculeChemin(chemin));
