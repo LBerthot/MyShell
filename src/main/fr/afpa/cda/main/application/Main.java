@@ -17,6 +17,7 @@ import fr.afpa.cda.main.commandes.MyRmdir;
 import fr.afpa.cda.main.commandes.MyTail;
 import fr.afpa.cda.main.commandes.MyTop;
 import fr.afpa.cda.main.commandes.MyTouch;
+import fr.afpa.cda.main.commandes.MyWc;
 import fr.afpa.cda.main.dto.CommandeLine;
 import fr.afpa.cda.main.helpers.PathMain;
 
@@ -60,11 +61,11 @@ public class Main {
 			} else if (cmd.getNom().equals("myMv")) {
 				MyMv.exec(cmd);
 			} else if (cmd.getNom().equals("myTop")) {
-				MyTop.exec();
+				MyTop.exec(cmd);
 			} else if (cmd.getNom().equals("myCp")) {
 				MyCp.exec(cmd);
 			} else if (cmd.getNom().equals("myWc")) {
-
+				MyWc.exec(cmd);
 			} else if (cmd.getNom().equals("myCat")) {
 				MyCat.exec(cmd);
 			} else if (cmd.getNom().equals("myTouch")) {

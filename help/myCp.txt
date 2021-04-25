@@ -1,0 +1,14 @@
+NAME
+       cp - copy files and directories
+
+SYNOPSIS
+       cp [OPTION]... SOURCE... DIRECTORY
+
+
+DESCRIPTION
+       Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.
+
+       Mandatory  arguments  to  long  options  are  mandatory  for short
+       options too.
+
+       --help display this help and exit

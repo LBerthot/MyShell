@@ -1,21 +1,32 @@
 package fr.afpa.cda.main.commandes;
 
+import java.io.IOException;
 import java.util.Optional;
+
+import fr.afpa.cda.main.dto.CommandeLine;
+import fr.afpa.cda.main.helpers.ReadAllFile;
 
 
 public class MyTop {
 
-	public static void exec() {
-		while (true) {
+	public static void exec(CommandeLine cmd) {
+		if ((!cmd.getOptions().isEmpty()) && cmd.getOptions().contains("-help")) {
 			try {
+				ReadAllFile.help(cmd);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+		//while (true) {
+			//try {
 				ProcessHandle.allProcesses()
 				.forEach(process -> System.out.println(detailsProcessus(process)));
-				Thread.sleep(1000);
+				/*Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+		}*/
 		}
-		
 	}
 	private static String detailsProcessus(ProcessHandle process) {
 	    return String.format("%8d %8s %10s %26s %-40s",
