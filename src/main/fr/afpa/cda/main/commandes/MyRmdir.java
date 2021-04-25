@@ -44,7 +44,7 @@ public class MyRmdir {
 		}
 	}
 
-	public static void myRmDirOptionP(CommandeLine cmd) throws IOException {
+	public static void myRmDirOptionP(CommandeLine cmd) {
 		String chemin = cmd.getParams().get(0);
 		Path path = Paths.get(PathMain.calculeChemin(chemin));
 		try {
