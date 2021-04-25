@@ -1,0 +1,10 @@
+NAME
+       myTail- The tail command is a command-line utility for 
+       outputting the last part of files given to it via standard input.
+
+SYNOPSIS
+       myTail [OPTION]... [FILE]...
+
+DESCRIPTION
+       To view the last ten lines of a file pass the name of a file to the tail command. 
+       The last ten lines of the file will be printed to standard output.

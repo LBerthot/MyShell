@@ -1,0 +1,11 @@
+NAME
+       myTouch - Create files. 
+
+SYNOPSIS
+       myTouch [OPTION]... [FILE]...[EXTENSION]
+
+DESCRIPTION
+       This command creates an empty file.
+
+OPTIONS
+       myTouch [OPTION]... [FILE]...[EXTENSION] + [OPTION]... [FILE]...[EXTENSION] + ... to create multiple files.
