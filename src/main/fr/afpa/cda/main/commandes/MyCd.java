@@ -21,8 +21,7 @@ public class MyCd {
 	}
 
 	public static void exec(CommandeLine cmd) {
-
-		String chemin = cmd.getParams().get(0);
+		String chemin;
 		try {
 			if (!cmd.getOptions().isEmpty()) {
 				PathMain.isOption(cmd.getOptions(), ALL_OPTIONS);
@@ -30,6 +29,7 @@ public class MyCd {
 					ReadAllFile.help(cmd);
 				}
 			} else {
+				chemin = cmd.getParams().get(0);
 				chemin = PathMain.calculeCheminDirIfExists(chemin);
 				PathMain.pathMiniShell = chemin;
 			}
