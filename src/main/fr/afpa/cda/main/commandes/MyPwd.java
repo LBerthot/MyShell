@@ -23,7 +23,7 @@ public class MyPwd {
 			if (cmd.getOptions().isEmpty()) {
 				System.out.println(PathMain.pathMiniShell);
 			} else {
-				PathMain.optionIsValid(cmd.getOptions(), ALL_OPTIONS);
+				PathMain.isOption(cmd.getOptions(), ALL_OPTIONS);
 				if (cmd.getOptions().contains("-help")) {
 					ReadAllFile.help(cmd);
 				}

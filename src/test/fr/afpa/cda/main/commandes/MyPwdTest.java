@@ -1,6 +1,5 @@
 package fr.afpa.cda.main.commandes;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -20,6 +19,7 @@ class MyPwdTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		
 	}
 
 	@AfterEach
@@ -28,7 +28,8 @@ class MyPwdTest {
 
 	@Test
 	void testExec() {
-		fail("Not yet implemented");
+
 	}
+
 
 }

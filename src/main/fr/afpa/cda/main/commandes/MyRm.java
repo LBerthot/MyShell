@@ -30,7 +30,7 @@ public class MyRm {
 		Boolean optionV = false;
 		if (!cmd.getOptions().isEmpty()) {
 			try {
-				PathMain.optionIsValid(cmd.getOptions(), ALL_OPTIONS);
+				PathMain.isOption(cmd.getOptions(), ALL_OPTIONS);
 				if (cmd.getOptions().contains("-help")) {
 					ReadAllFile.help(cmd);
 				}

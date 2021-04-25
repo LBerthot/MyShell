@@ -8,7 +8,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import fr.afpa.cda.main.dto.CommandeLine;
+
 class ReadAllFileTest {
+	CommandeLine cmd;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -20,6 +23,7 @@ class ReadAllFileTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		cmd = PathMain.decouperCommande("myRm --help");
 	}
 
 	@AfterEach

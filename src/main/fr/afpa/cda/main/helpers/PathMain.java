@@ -82,7 +82,7 @@ public class PathMain {
 		return ALL_COMMANDES.contains(commande);
 	}
 	
-	public static Boolean optionIsValid(List<String> options, List<String> allOptions) throws OptionInvalidException {
+	public static Boolean isOption(List<String> options, List<String> allOptions) throws OptionInvalidException {
 		for (String option : options) {
 			if (!allOptions.contains(option)) {
 				throw new OptionInvalidException("l'option entrée est invalide");

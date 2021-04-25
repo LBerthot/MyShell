@@ -31,7 +31,7 @@ public class MyFind {
 			System.out.println("Commande invalide");
 		} else {
 			try {
-				PathMain.optionIsValid(cmd.getOptions(), ALL_OPTIONS);
+				PathMain.isOption(cmd.getOptions(), ALL_OPTIONS);
 				if (cmd.getOptions().contains("-help")) {
 					ReadAllFile.help(cmd);
 				}

@@ -30,7 +30,7 @@ public class MyRmdir {
 			myRmDirWithoutOption(cmd);
 		} else {
 			try {
-				PathMain.optionIsValid(cmd.getOptions(), ALL_OPTIONS);
+				PathMain.isOption(cmd.getOptions(), ALL_OPTIONS);
 				if (cmd.getOptions().contains("-help")) {
 					ReadAllFile.help(cmd);
 				}if (cmd.getOptions().contains("p")) {

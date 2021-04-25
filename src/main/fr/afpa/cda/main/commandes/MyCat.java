@@ -27,7 +27,7 @@ public class MyCat {
 			if (cmd.getOptions().isEmpty()) {
 				myCatWithoutOption(cmd);
 			} else {
-				PathMain.optionIsValid(cmd.getOptions(), ALL_OPTIONS);
+				PathMain.isOption(cmd.getOptions(), ALL_OPTIONS);
 				if (cmd.getOptions().contains("-help")) {
 					ReadAllFile.help(cmd);
 				}
